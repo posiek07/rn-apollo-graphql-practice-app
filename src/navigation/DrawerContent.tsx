@@ -13,24 +13,25 @@ import {
   Switch
 } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export const DrawerContent = props => {
   const paperTheme = useTheme();
-  console.log(paperTheme.colors);
+
   const translateX = Animated.interpolate(props.progress, {
     inputRange: [0, 0.5, 0.7, 0.8, 1],
     outputRange: [-100, -85, -70, -45, 0]
   });
 
   return (
-    <DrawerContentScrollView {...props}>
+    <Animated.ScrollView {...props}>
       <Animated.View
-        renderToHardwareTextureAndroid={true}
+        // renderToHardwareTextureAndroid={true}
         style={[
           styles.drawerContent,
           {
-            backgroundColor: paperTheme.colors.background,
-            transform: [{ translateX: translateX }]
+            backgroundColor: paperTheme.colors.surface,
+            transform: [{ translateX }]
           }
         ]}
       >
@@ -109,7 +110,7 @@ export const DrawerContent = props => {
           </Drawer.Section>
         </View>
       </Animated.View>
-    </DrawerContentScrollView>
+    </Animated.ScrollView>
   );
 };
 

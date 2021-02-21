@@ -13,24 +13,30 @@ import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { apolloClient } from './graphql';
 import { AppNavigator } from './src/navigation';
 
-
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
   ...NavigationDefaultTheme,
-  Colors
+  colors: {
+    ...PaperDefaultTheme.colors,
+    ...NavigationDefaultTheme.colors
+  }
 };
+
 
 const CombinedDarkTheme = {
   ...PaperDarkTheme,
   ...NavigationDarkTheme,
+  mode: 'exact',
   colors: {
-    ...PaperDarkTheme.colors
-    // ...NavigationDarkTheme.colors
+    ...PaperDarkTheme.colors,
+    ...NavigationDarkTheme.colors
   }
 };
 
+
 export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
+
   const theme = isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme;
 
   const toggleTheme = () => {

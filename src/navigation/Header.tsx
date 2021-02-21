@@ -1,6 +1,6 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { Appbar, useTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -15,7 +15,7 @@ export const Header = ({ scene, previous, navigation }) => {
       : scene.route.name;
 
   return (
-    <Appbar.Header theme={{ colors: { primary: theme.colors.primary } }}>
+    <Appbar.Header theme={{ colors: { primary: theme.colors.surface } }}>
       {previous ? (
         <Appbar.BackAction
           onPress={navigation.goBack}
@@ -33,9 +33,14 @@ export const Header = ({ scene, previous, navigation }) => {
       <Appbar.Content
         title={
           previous ? (
-            { title }
+            title
           ) : (
-            <MaterialCommunityIcons name="home-outline" size={40} />
+            <MaterialCommunityIcons
+              name="home-outline"
+              size={40}
+              color={theme.colors.text}
+              style={{ alignSelf: 'flex-end' }}
+            />
           )
         }
       />
