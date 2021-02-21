@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { CardView } from '../components';
+import { Button } from 'react-native-paper'
 
 interface Props {
   navigation;
@@ -13,6 +14,7 @@ const PlaceDetail: React.FC<Props> = props => {
   return (
     <SafeAreaView>
       <CardView {...(params.item as any)} />
+      <Button style={{marginTop: 20}} onPress={() => {navigation.navigate("Form", {item: params.item})}}>Edit Place</Button>
     </SafeAreaView>
   );
 };

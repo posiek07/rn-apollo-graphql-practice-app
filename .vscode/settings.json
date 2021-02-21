@@ -1,4 +1,7 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "vetur.format.defaultFormatter.ts": "prettier-tslint"
+    "vetur.format.defaultFormatter.ts": "prettier-tslint",
+    "search.exclude": {
+        "**/node_modules": false
+    }
 }

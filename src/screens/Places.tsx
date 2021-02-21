@@ -3,9 +3,11 @@ import { FlatList, Button, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { usePlacesQuery, useCreatePlaceMutation } from '../../graphql';
 import CardView from '../components/CardView';
 
-class Props {}
+class Props {
+  navigation;
+}
 
-const Places: React.FC<Props> = () => {
+const Places: React.FC<Props> = ({ navigation }) => {
   const { loading, data, error, refetch } = usePlacesQuery();
   const [createPlace] = useCreatePlaceMutation();
 
@@ -35,7 +37,12 @@ const Places: React.FC<Props> = () => {
           }}
           data={data && data.places ? data.places : []}
           keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <CardView {...(item as any)} />}
+          renderItem={({ item }) => (
+            <CardView
+              {...(item as any)}
+              onPress={() => navigation.navigate('Detail', { item })}
+            />
+          )}
         />
       )}
     </SafeAreaView>
